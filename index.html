@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>VueJs</title>
+<style>
+    .verde {
+        color: green;
+    }
+</style>
 </head>
 <body>
     <div id="app">
@@ -27,7 +32,13 @@
         <!--Recuperando atributos do data-->
         {{somarN1eN2()}}<br>
         <hr>
-
+        <!--Diretiva V-bind-->
+        <a v-bind:href="site">Site</a> <br>
+        <p v-bind:class="cor">Entendendo a diretiva v-bind</p> <br>
+        <input type="text" v-bind:value="valor" >
+        <input type="checkbox" v-bind:checked="check"> <br>
+        <hr>
+        
 
     </div>
 
@@ -45,7 +56,11 @@
                     instagram:'@carloosjr21'
                 },
                 n1:10,
-                n2:5
+                n2:5,
+                site:"https://www.google.com.br",
+                cor:'verde',
+                valor:'Entendendo a diretiva V-bind',
+                check:true
             },
             methods: {
                 somar: function somar(){
