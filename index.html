@@ -10,9 +10,18 @@
 <body>
     <div id="app">
         {{mensagem}}<br>
+        <hr>
         Valor Total: {{valorTotal}} <br>
         Hobbies: {{Hobbies[2]}}<br>
-        Perfil: Nome: {{perfil.nome}}  || profissao: {{perfil.profissao}} || instagram: {{perfil.instagram}}
+        Perfil: Nome: {{perfil.nome}}  || profissao: {{perfil.profissao}} || instagram: {{perfil.instagram}}<br>
+        <hr>
+        {{somar()}}<br>
+        {{subtrair()}}<br>
+        {{multiplicar()}}<br>
+        {{dividir()}}<br>
+        {{numeroAleatorio()}}<br>
+        <hr>
+        
 
     </div>
 
@@ -29,7 +38,23 @@
                     profissao:'desenvolvedor',
                     instagram:'@carloosjr21'
                 }
-
+            },
+            methods: {
+                somar: function somar(){
+                    return 4 + 2;   
+                },
+                subtrair: function(){
+                    return 4 - 2;
+                },
+                multiplicar: ()=>{
+                  return  4 * 2;
+                },
+                dividir(){
+                   return 4 / 2;
+                },
+                numeroAleatorio(){
+                    return Math.random();
+                }
             }
         })
 
