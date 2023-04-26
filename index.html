@@ -10,6 +10,12 @@
     .verde {
         color: green;
     }
+    .azul {
+        background-color: blue;
+    }
+    .violeta {
+        background-color: blueviolet;
+    }
 </style>
 </head>
 <body>
@@ -38,6 +44,9 @@
         <input type="text" v-bind:value="valor" >
         <input type="checkbox" v-bind:checked="check"> <br>
         <hr>
+        <!--Utilizando expressões no data binding-->
+        <input :value="2 + 2" :class="teste ? 'violeta' : estilo"> <br>
+        <hr>
         
 
     </div>
@@ -60,7 +69,9 @@
                 site:"https://www.google.com.br",
                 cor:'verde',
                 valor:'Entendendo a diretiva V-bind',
-                check:true
+                check:true,
+                estilo:'azul',
+                teste: true
             },
             methods: {
                 somar: function somar(){
