@@ -47,7 +47,9 @@
         <!--Utilizando expressões no data binding-->
         <input :value="2 + 2" :class="teste ? 'violeta' : estilo"> <br>
         <hr>
-        
+        <!--Diretiva V-on , manipulando eventos-->
+        <input type="text" @keyup="imprimirTexto">
+        <button @click="mensagemAlerta">Botão</button>
 
     </div>
 
@@ -89,8 +91,14 @@
                 numeroAleatorio(){
                     return Math.random();
                 },
-                somarN1eN2() {
+                somarN1eN2(){
                     return this.n1 + this.n2;
+                },
+                imprimirTexto(){
+                    console.log('Texto');
+                },
+                mensagemAlerta(){
+                    alert('Mensagem de alerta');
                 }
             }
         })
