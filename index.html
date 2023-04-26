@@ -9,15 +9,27 @@
 </head>
 <body>
     <div id="app">
-        {{mensagem}}
+        {{mensagem}}<br>
+        Valor Total: {{valorTotal}} <br>
+        Hobbies: {{Hobbies[2]}}<br>
+        Perfil: Nome: {{perfil.nome}}  || profissao: {{perfil.profissao}} || instagram: {{perfil.instagram}}
+
     </div>
 
     <script>
-        
+
         const vm = new Vue({
             el: '#app',
             data :{
-                mensagem: 'Primeiro template controlado pelo Vue'
+                mensagem: 'Primeiro template controlado pelo Vue',
+                valorTotal: 150,
+                Hobbies:['futebol','dormir','jogar video game'],
+                perfil:{
+                    nome:'Junior',
+                    profissao:'desenvolvedor',
+                    instagram:'@carloosjr21'
+                }
+
             }
         })
 
