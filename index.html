@@ -9,19 +9,25 @@
 </head>
 <body>
     <div id="app">
+        <!-- Instancia do Vue e o double mustache -->
         {{mensagem}}<br>
         <hr>
+        <!--Explorando um pouco mais a propriedade data-->
         Valor Total: {{valorTotal}} <br>
         Hobbies: {{Hobbies[2]}}<br>
         Perfil: Nome: {{perfil.nome}}  || profissao: {{perfil.profissao}} || instagram: {{perfil.instagram}}<br>
         <hr>
+        <!--Primeiros Métodos a instância de Vue-->
         {{somar()}}<br>
         {{subtrair()}}<br>
         {{multiplicar()}}<br>
         {{dividir()}}<br>
         {{numeroAleatorio()}}<br>
         <hr>
-        
+        <!--Recuperando atributos do data-->
+        {{somarN1eN2()}}<br>
+        <hr>
+
 
     </div>
 
@@ -37,7 +43,9 @@
                     nome:'Junior',
                     profissao:'desenvolvedor',
                     instagram:'@carloosjr21'
-                }
+                },
+                n1:10,
+                n2:5
             },
             methods: {
                 somar: function somar(){
@@ -54,6 +62,9 @@
                 },
                 numeroAleatorio(){
                     return Math.random();
+                },
+                somarN1eN2() {
+                    return this.n1 + this.n2;
                 }
             }
         })
