@@ -8,13 +8,31 @@
     <title>VueJs</title>
 <style>
     .verde {
-        color: green;
+        background-color: green;
+    }
+    .branco {
+        background-color: white;
+    }
+    .vermelha {
+        background-color: red;
     }
     .azul {
         background-color: blue;
     }
     .violeta {
         background-color: blueviolet;
+    }
+    .borda {
+        border: 1px solid;
+    }
+    .div-principal {
+        height: 200px;
+        width: 200px;
+    }
+    .div-comum {
+        height:50px;
+        width: 50px;
+        display: inline-block;
     }
 </style>
 </head>
@@ -49,7 +67,18 @@
         <hr>
         <!--Diretiva V-on , manipulando eventos-->
         <input type="text" @keyup="imprimirTexto">
-        <button @click="mensagemAlerta">Botão</button>
+        <button @click="mensagemAlerta">Botão</button><br>
+        <hr>
+        <div class="borda div-principal" :class="cor">
+            Cor: {{cor}}
+            <br>
+            Posição X do mouse:{{posicaoX}} <br>
+            Posição Y do mouse:{{posicaoY}}
+        </div>
+        <hr>
+        <div @click="mudarCor('verde')" class="borda div-comum"></div>
+        <div class="borda div-comum" @mouseover="mudarCor('azul')"  @mouseout="mudarCor('vermelha')"></div>
+        <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
 
     </div>
 
@@ -73,7 +102,10 @@
                 valor:'Entendendo a diretiva V-bind',
                 check:true,
                 estilo:'azul',
-                teste: true
+                teste: true,
+                cor:'branco',
+                posicaoX:0,
+                posicaoY:0
             },
             methods: {
                 somar: function somar(){
@@ -99,6 +131,13 @@
                 },
                 mensagemAlerta(){
                     alert('Mensagem de alerta');
+                },
+                mudarCor(c) {
+                    this.cor=c
+                },
+                coordenadas(e) {
+                    this.posicaoX=e.clientX
+                    this.posicaoY=e.clientY
                 }
             }
         })
