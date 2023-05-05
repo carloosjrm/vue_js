@@ -132,7 +132,9 @@
         <div v-show="exibirTextoAjuda">
             <h3>Texto ajuda</h3>
             <p>Conteudo texto ajuda</p>
-        </div>
+        </div><br>
+        <hr>
+        <div v-html="elementosHTML"></div>
 
 
         
@@ -170,7 +172,8 @@
                 exibirSaldo:false,
                 idade:0,
                 nota: 0,
-                exibirTextoAjuda: false
+                exibirTextoAjuda: false,
+                elementosHTML: '<p><b>Site</b></p><a href="https://www.google.com.br">Google</a>'
             },
             methods: {
                 somar: function somar(){
