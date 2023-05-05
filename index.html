@@ -134,7 +134,14 @@
             <p>Conteudo texto ajuda</p>
         </div><br>
         <hr>
-        <div v-html="elementosHTML"></div>
+        <!-- Diretiva V-HTML-->
+        <div v-html="elementosHTML"></div><br>
+        <hr>
+        <p v-once>Saldo inicial: {{ saldo}}</p>
+        <p>Saldo atualizado:{{saldo}}</p>
+        <input type="text" id="valor">
+        <button @click="creditar">Creditar</button>
+        <button @click="debitar">Debitar</button>
 
 
         
@@ -173,7 +180,8 @@
                 idade:0,
                 nota: 0,
                 exibirTextoAjuda: false,
-                elementosHTML: '<p><b>Site</b></p><a href="https://www.google.com.br">Google</a>'
+                elementosHTML: '<p><b>Site</b></p><a href="https://www.google.com.br">Google</a>',
+                saldo:1100
             },
             methods: {
                 somar: function somar(){
@@ -230,6 +238,12 @@
                 },
                 setNota(){
                     this.nota = inputNota.value
+                },
+                creditar(){
+                    this.saldo += parseFloat(valor.value) 
+                },
+                debitar(){
+                    this.saldo -= parseFloat(valor.value)
                 }
             }
         })
