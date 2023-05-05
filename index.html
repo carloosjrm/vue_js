@@ -106,7 +106,27 @@
         <br>
         <p id="paragrafo" style="color:green" >Parágrafo</p><br>
         <div id="bloco">Conteudo interno da div</div>
-        <button @click="selecionandoElementoFilho()" >Botão</button>
+        <button @click="selecionandoElementoFilho()" >Botão</button><br>
+        <hr>
+        <!--V-if Simples-->
+        <button @click="exibirSaldo = !exibirSaldo" >
+            <span v-if="!exibirSaldo" >Exibir Saldo</span>
+            <span v-if="exibirSaldo" >Ocultar Saldo</span>
+        </button> <!--toggle-->
+        <p>Saldo:<span v-if="exibirSaldo">R$ {{saldo}}</span></p>
+        <hr>
+        Idade: <input type="text" id="inputIdade" @blur="setIdade()">
+        <p v-if="idade < 18">Menor de idade</p>
+        <p v-else>Maior de idade</p><br>
+        <hr>
+        Nota: <input type="text" id="inputNota" @blur="setNota()">
+        <p v-if="nota == ''" >Digite a nota do aluno</p>
+        <p v-else-if="nota >= 7 && nota <=10" >Aluno aprovado</p>
+        <p v-else-if="nota >= 5 && nota <7" >Aluno em recuperação</p>
+        <p v-else-if="nota >= 0 && nota <5" >Aluno reprovado</p>
+        <p v-else >A nota informada é inválida</p>
+
+
         
     </div>
 
@@ -137,7 +157,11 @@
                 msg:'',
                 cliques: 0,
                 formulario: '',
-                teclas:''
+                teclas:'',
+                saldo:4570.17,
+                exibirSaldo:false,
+                idade:0,
+                nota: 0
             },
             methods: {
                 somar: function somar(){
@@ -188,6 +212,12 @@
                     //console.log(opcoes.value)
                     //console.log(paragrafo.style.color)
                     console.log(bloco.innerHTML)
+                },
+                setIdade(){
+                    this.idade = inputIdade.value
+                },
+                setNota(){
+                    this.nota = inputNota.value
                 }
             }
         })
