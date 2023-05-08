@@ -146,8 +146,36 @@
         <!--Diretiva V-for: Implementando laços de repetição-->
         <ul>
             <li v-for="curso in cursos" >{{curso}}</li>
+        </ul><br>
+        <hr>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(jogo,chave) in jogos">
+                    <td>{{chave}}</td>
+                    <td>{{jogo.titulo}}</td>
+                    <td>{{jogo.descricao}}</td>
+                </tr>
+            </tbody>
+        </table><br>
+        <hr>
+        <!--Renderização de listas com o atributo key-->
+        <ul>
+            <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px" :key="p.id">
+                <div>
+                    {{p.publicacao}}
+                    <hr>
+                    <input type="text">
+                </div>
+            </li>
         </ul>
-
+        <button @click="misturarArray()"> Misturar publicações</button>
 
         
     </div>
@@ -187,7 +215,22 @@
                 exibirTextoAjuda: false,
                 elementosHTML: '<p><b>Site</b></p><a href="https://www.google.com.br">Google</a>',
                 saldo:1100,
-                cursos:['Laravel','Web completo','Banco de dados','Solid','Angular']
+                cursos:['Laravel','Web completo','Banco de dados','Solid','Angular'],
+                jogos:{
+                    001:{
+                        titulo:'God of war',
+                        descricao:'Melhor jogo de ação de todos'
+                    },
+                    002: {
+                        titulo:'Medal of honror',
+                        descricao:'Melhor jogo de guerra de todos os tempos'
+                    }
+                },
+                publicacoes: [
+                        {id:1, publicacao:'Publicação 1'},
+                        {id:2, publicacao:'Publicações 2'},
+                        {id:3, publicacao:'Publicações 3'}
+                    ]
             },
             methods: {
                 somar: function somar(){
@@ -250,6 +293,15 @@
                 },
                 debitar(){
                     this.saldo -= parseFloat(valor.value)
+                },
+                misturarArray(){
+                    let = misturado = []
+
+                    misturado[0]=this.publicacoes[2]
+                    misturado[1]=this.publicacoes[0]
+                    misturado[2]=this.publicacoes[1]
+
+                    this.publicacoes = misturado
                 }
             }
         })
