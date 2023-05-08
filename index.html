@@ -141,7 +141,12 @@
         <p>Saldo atualizado:{{saldo}}</p>
         <input type="text" id="valor">
         <button @click="creditar">Creditar</button>
-        <button @click="debitar">Debitar</button>
+        <button @click="debitar">Debitar</button><br>
+        <hr>
+        <!--Diretiva V-for: Implementando laços de repetição-->
+        <ul>
+            <li v-for="curso in cursos" >{{curso}}</li>
+        </ul>
 
 
         
@@ -181,7 +186,8 @@
                 nota: 0,
                 exibirTextoAjuda: false,
                 elementosHTML: '<p><b>Site</b></p><a href="https://www.google.com.br">Google</a>',
-                saldo:1100
+                saldo:1100,
+                cursos:['Laravel','Web completo','Banco de dados','Solid','Angular']
             },
             methods: {
                 somar: function somar(){
