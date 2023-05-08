@@ -177,13 +177,41 @@
         </ul>
         <button @click="misturarArray()"> Misturar publicações</button><br>
         <hr>
+
         <ul>
             <li v-for="c in comentarios" >{{c.id}} - {{c.comentario}}</li>
         </ul>
         <button @click="adicionarElemento()">Adicionar</button>
         <button @click="removerElemento()">Remover</button>
-        <button @click="modificarElemento()">Atualizar</button>
-
+        <button @click="modificarElemento()">Atualizar</button><br>
+        <hr>
+        <template v-if="saudacao">
+            <h1>Boas Vindas</h1>
+            <p>Conteúdo da tag <strong>template</strong></p>
+        </template>
+        <!--Trabalhando com a tag template para renderização condicional-->
+        <template v-for="n in 10">
+            <p>2 x {{n}} = {{2*n}}</p>
+        </template><br>
+        <hr>
+        <!--Trabalhando com propriedades computadas (computed)-->
+        <h4>Adicionar Pacientes</h4>
+        <span>Nome:</span> <input type="text" id="inputNome"><br>
+        <span>Idade:</span> <input type="text" id="inputIdad"><br>
+        <span>Plano:</span> <input type="text" id="inputPlano"><br>
+        <button @click="adicionarPaciente()">Adicionar</button>
+        <hr>
+        
+        <h4>Ultimo paciente cadastrado</h4>
+        <p v-if="pacientes.length > 0">
+           {{ultimoPaciente}}
+        </p>
+       <hr>
+       <h4>Pacientes do plano Ouro</h4>
+       <p v-for="p in pacientesPlanoOuro">{{p.nome}}</p>
+       <hr>
+        <h4>Pacientes Cadastrados</h4>
+        <p v-for="p in pacientes">{{p.nome}}</p>
         
     </div>
 
@@ -242,7 +270,9 @@
                         {id:1, comentario: 'Comentário 1'},
                         {id:2, comentario: 'Comentário 2'},
                         {id:3, comentario: 'Comentário 3'}
-                    ]
+                    ],
+                    saudacao: true,
+                    pacientes: []
             },
             methods: {
                 somar: function somar(){
@@ -325,6 +355,28 @@
                     this.$set(
                         this.comentarios,1,{id: 2, comentario:'Comentário 2 atualizado'}
                     )
+                },
+                adicionarPaciente(){
+                    this.pacientes.push({
+                        nome: inputNome.value,
+                        idade: inputIdad.value,
+                        plano: inputPlano.value
+                    })
+                }
+            },
+            computed:{
+                ultimoPaciente(){
+                    let key = this.pacientes.length -1
+                    let txt = ''
+
+                    txt += 'Paciente: ' + this.pacientes[key].nome
+                    txt += ', Idade: ' + this.pacientes[key].idade
+                    txt += ', Plano: ' + this.pacientes[key].plano
+
+                    return txt
+                },
+                pacientesPlanoOuro(){
+                    return this.pacientes.filter(item => item.plano == 'Ouro')
                 }
             }
         })
