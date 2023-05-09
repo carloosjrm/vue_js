@@ -237,7 +237,12 @@
         <textarea v-model="diagnostico"></textarea> <br>
         {{diagnostico}}
         <hr>
-
+        <!--Trabalhando com a propriedade observadora (watch)-->
+        <span>Aluno: </span><input type="text" v-model="aluno">
+        <br>
+        <ul>
+            <li v-for="a in lista">{{a.nome}} , {{a.idade}}</li>
+        </ul>
         
 
 
@@ -305,7 +310,16 @@
                     sexo:'',
                     plano:'',
                     doencas:[],
-                    diagnostico:''
+                    diagnostico:'',
+                    aluno:'',
+                    alunos:[
+                        {nome:'Maria Silva', idade:23},
+                        {nome:'Marcos Pereira', idade:35},
+                        {nome:'Mario Abreu', idade:43},
+                        {nome:'Marly Goncalves', idade:75},
+                        {nome:'Milena Andrade', idade:85}
+                    ],
+                    lista:[]
             },
             methods: {
                 somar: function somar(){
@@ -410,6 +424,12 @@
                 },
                 pacientesPlanoOuro(){
                     return this.pacientes.filter(item => item.plano == 'Ouro')
+                }
+            },
+            watch:{
+                aluno(valorNovo) {
+                    console.log(valorNovo)
+                this.lista = this.alunos.filter(a => a.nome.match(valorNovo))
                 }
             }
         })
