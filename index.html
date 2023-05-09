@@ -211,8 +211,36 @@
        <p v-for="p in pacientesPlanoOuro">{{p.nome}}</p>
        <hr>
         <h4>Pacientes Cadastrados</h4>
-        <p v-for="p in pacientes">{{p.nome}}</p>
+        <p v-for="p in pacientes">{{p.nome}}</p><br>
+        <hr>
+        <!--V-model-Sincronizando inputs com atributos(two-way-data binding)-->
+        {{atleta}} <br>
+        <!--<input type="text" :value="atleta" @keyup="atleta = $event.target.value">-->
+        <input type="text" v-model="atleta"><br>
+        <hr>
+        <input type="radio" value="f" v-model="sexo">Feminino
+        <input type="radio" value="m" v-model="sexo">Masculino <br>
+        {{sexo}} <br>
+        <hr>
+        <select v-model="plano">
+            <option value="" disabled>Selecione um plano</option>
+            <option value="1">Básico 1</option>
+            <option value="2">Básico 2</option>
+            <option value="3">Master</option>
+        </select> <br> {{plano}}
+        <hr>
+        <input type="checkbox" value="100" v-model="doencas">Asma
+        <input type="checkbox" value="101" v-model="doencas">Tuberculose
+        <input type="checkbox" value="102" v-model="doencas">Rinite <br>
+        {{doencas}}
+        <hr>
+        <textarea v-model="diagnostico"></textarea> <br>
+        {{diagnostico}}
+        <hr>
+
         
+
+
     </div>
 
     <script>
@@ -272,7 +300,12 @@
                         {id:3, comentario: 'Comentário 3'}
                     ],
                     saudacao: true,
-                    pacientes: []
+                    pacientes: [],
+                    atleta:'João Félix',
+                    sexo:'',
+                    plano:'',
+                    doencas:[],
+                    diagnostico:''
             },
             methods: {
                 somar: function somar(){
